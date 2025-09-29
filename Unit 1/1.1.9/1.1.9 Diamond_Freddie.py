@@ -17,19 +17,17 @@ shapeX = int(shape_position_x[0])
 shapeY = int(shape_position_y[0])
 
 #Definitions
-def start():
+def start(): #Going to where the turtle starts making each individual shape
   t.penup()
   t.goto(start_x, start_y)
   t.pendown()
 
-def begin():
+def begin(): #Setting the start_x and start_y to a number in a list above so I don't have to write it so often
   start_x = int(start_position_x[0])
   start_y = int(start_position_y[0])
   start()
-  '''start_position_x.pop(0)
-  start_position_y.pop(0)'''
 
-def nextPos():
+def nextPosition(): #Setting the next position of start()
   global start_x
   global start_y
   start_position_x.pop(0)
@@ -37,14 +35,56 @@ def nextPos():
   start_x = int(start_position_x[0])
   start_y = int(start_position_y[0])
 
+#trying to make a create all shapes command
+shapeX1 = [200,-100,200]
+shapeX2 = [100,-200,166.6]
+shapeX3 = [0,0,100]
+shapeY1 = [100,100,100]
+shapeY2 = [100,100,100]
+shapeY3 = [-200,-200,100]
 
-#Use color and size variations to enhance your artwork.
+startPosX1 = int(shapeX1[0])
+startPosY1 = int(shapeY1[0])
+startPosX2 = int(shapeX1[0])
+startPosY2 = int(shapeY1[0])
+startPosX3 = int(shapeX1[0])
+startPosY3 = int(shapeY1[0])
+
+def drawShapes_2(): 
+  global startPosX1
+  global startPosX2
+  global startPosX3
+  global startPosY1
+  global startPosY2
+  global startPosY3
+
+  t.fillcolor(turtle_color[0])
+  t.begin_fill()
+
+  t.goto(shapeX1,shapeY1)
+  shapeX1.pop(0)
+  shapeY1.pop(0)
+  startPosX1 = int(shapeX1[0])
+  startPosY1 = int(shapeY1[0])
+
+  t.goto(shapeX2,shapeY2)
+  shapeX2.pop(0)
+  shapeY2.pop(0)
+  startPosX2 = int(shapeX1[0])
+  startPosY2 = int(shapeY1[0])
+
+  t.goto(shapeX3,shapeY3)
+  shapeX3.pop(0)
+  shapeY3.pop(0)
+  startPosX3 = int(shapeX1[0])
+  startPosY3 = int(shapeY1[0])
+
+  t.end_fill()
+  turtle_color.pop(0)
+
 #Use these computational skills
     #Use iteration (looping) and conditional execution (if statements) to control the drawing.
-    #Use a list that will have an affect on your artwork
     #Have user interaction have an affect on your artwork
-    #Create a custom method(python def) that will be used in more than 1 location in your program 
-
 #Choose descriptive variable names.
 #Comment code segments or blocks of statements.
 
@@ -55,24 +95,22 @@ for s in turtle_shape:
   t.pencolor("black")
 t.pensize(5)
 
-#Going to where the drawing starts
+#Shapes 1 and 2
 begin()
 
-#Shapes 1 and 2
-for i in range (2):
+for i in range (2): 
   t.fillcolor(turtle_color[0])
   t.begin_fill()
   t.goto(shapeX, shapeY)
   t.back(100)
   shapeX = shape_position_x.pop(0)
   shapeX = int(shape_position_x[0])
-
   t.goto(start_x, start_y)
   t.end_fill()
   turtle_color.pop(0)
 shapeY = shape_position_y.pop(0)
 shapeY = int(shape_position_y[0])
-nextPos()
+nextPosition()
 
 #Shape 4 and 5
 begin()
@@ -92,7 +130,7 @@ for i in range(2):
   shapeX = shape_position_x.pop(0)
   shapeX = int(shape_position_x[0])
   turtle_color.pop(0)
-nextPos()
+nextPosition()
 
 #Shape 7 and 8
 begin()
@@ -112,7 +150,7 @@ for i in range(2):
 
 shapeY = shape_position_y.pop(0)
 shapeY = int(shape_position_y[0])
-nextPos()
+nextPosition()
 
 #Shape 9 and 10
 begin()
@@ -135,7 +173,7 @@ for i in range(2):
 
 shapeY = shape_position_y.pop(0)
 shapeY = int(shape_position_y[0])
-nextPos()
+nextPosition()
 
 #Shape 11 and 12
 begin()
@@ -157,7 +195,7 @@ for i in range(2):
 
 shapeY = shape_position_y.pop(0)
 shapeY = int(shape_position_y[0])
-nextPos()
+nextPosition()
 
 #Shape 3
 begin()
@@ -174,7 +212,7 @@ shapeX = shape_position_x.pop(0)
 shapeX = int(shape_position_x[0])
 shapeY = shape_position_y.pop(0)
 shapeY = int(shape_position_y[0])
-nextPos()
+nextPosition()
 
 #Shape 6
 begin()
@@ -191,7 +229,7 @@ shapeX = shape_position_x.pop(0)
 shapeX = int(shape_position_x[0])
 shapeY = shape_position_y.pop(0)
 shapeY = int(shape_position_y[0])
-nextPos()
+nextPosition()
 
 #Shape 13
 begin()
