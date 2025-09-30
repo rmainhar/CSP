@@ -36,19 +36,19 @@ def nextPosition(): #Setting the next position of start()
   start_y = int(start_position_y[0])
 
 #trying to make a create all shapes command
-shapeX1 = [200,-100,200]
-shapeX2 = [100,-200,166.6]
-shapeX3 = [0,0,100]
-shapeY1 = [100,100,100]
-shapeY2 = [100,100,100]
-shapeY3 = [-200,-200,100]
+shapeX1 = [200,100,-100,-100,0]
+shapeX2 = [100,-100,-200,-166.6,0]
+shapeX3 = [0,0,0,-200,0]
+shapeY1 = [100,100,100,100,0]
+shapeY2 = [100,100,100,166.6,0]
+shapeY3 = [-200,-200,-200,100,0]
 
 startPosX1 = int(shapeX1[0])
 startPosY1 = int(shapeY1[0])
-startPosX2 = int(shapeX1[0])
-startPosY2 = int(shapeY1[0])
-startPosX3 = int(shapeX1[0])
-startPosY3 = int(shapeY1[0])
+startPosX2 = int(shapeX2[0])
+startPosY2 = int(shapeY2[0])
+startPosX3 = int(shapeX3[0])
+startPosY3 = int(shapeY3[0])
 
 def drawShapes_2(): 
   global startPosX1
@@ -61,23 +61,23 @@ def drawShapes_2():
   t.fillcolor(turtle_color[0])
   t.begin_fill()
 
-  t.goto(shapeX1,shapeY1)
+  t.goto(startPosX1,startPosY1)
   shapeX1.pop(0)
   shapeY1.pop(0)
   startPosX1 = int(shapeX1[0])
   startPosY1 = int(shapeY1[0])
 
-  t.goto(shapeX2,shapeY2)
+  t.goto(startPosX2,startPosY2)
   shapeX2.pop(0)
   shapeY2.pop(0)
-  startPosX2 = int(shapeX1[0])
-  startPosY2 = int(shapeY1[0])
+  startPosX2 = int(shapeX2[0])
+  startPosY2 = int(shapeY2[0])
 
-  t.goto(shapeX3,shapeY3)
+  t.goto(startPosX3,startPosY3)
   shapeX3.pop(0)
   shapeY3.pop(0)
-  startPosX3 = int(shapeX1[0])
-  startPosY3 = int(shapeY1[0])
+  startPosX3 = int(shapeX3[0])
+  startPosY3 = int(shapeY3[0])
 
   t.end_fill()
   turtle_color.pop(0)
@@ -97,8 +97,11 @@ t.pensize(5)
 
 #Shapes 1 and 2
 begin()
+for i in range(13):
+  drawShapes_2()
 
-for i in range (2): 
+'''for i in range (2): 
+  drawShapes_2()
   t.fillcolor(turtle_color[0])
   t.begin_fill()
   t.goto(shapeX, shapeY)
@@ -240,7 +243,7 @@ t.goto(shapeX, shapeY)
 t.back(133.3)
 t.goto(start_x, start_y)
 turtle_color.pop(0)
-t.end_fill()
+t.end_fill()'''
 
 #Keeping whats on the screen there and hiding turtle
 t.hideturtle()
