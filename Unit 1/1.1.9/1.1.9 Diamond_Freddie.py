@@ -1,16 +1,23 @@
 import turtle as trtl
+wn = trtl.Screen()
+wn.setup(width=1.0, height=1.0)
+
 #Create turtle shape
 trtl.addshape("diamond",((0,-6), (6,3), (5,5), (4,6), (-4,6), (-5,5), (-6,3)))
 
 #Lists
 #Complex Lists
-turtle_colorSlow = ["#b4e2ff", "#92d5ff", "#49b9ff", "#87CEFA", "#58bfff", "#78cbff", "#2dafff", "#11a4ff", "#009dff", "#38b3ff", "#a4dcff", "#73c9ff", "#22aaff", "light sky blue"]
+turtleColorSlowRed = ["#FA4D4D", "#FF4747", "#FF3B3B", "#FF4545", "#FF3D3D", "#FC4242", "#FF3636", "#FF3030", "#FF2E2E", "#FF3838", "#FF4A4A", "#FF4040", "#FF3333", "black"]
+turtle_colorSlowBlue = ["#00A1FF", "#16A1FF", "#56A1FF", "#24A1FF", "#48A1FF", "#32A1FF", "#72A1FF", "#88A1FF", "#96A1FF", "#72A1FF", "#08A1FF", "#40A1FF", "#80A1FF", "black"]
+turtle_colorSlow = []
 start_position_x = [0,200,100,0,-166.6,0,-100,0,0,0]
 start_position_y = [-200,100,100,166.6,166.6,-200,100,166.6,-200,0]
 shape_position_x = [200,-100,166.6,-166.6,166.6,0,100,-66.6,-100,133.3,100,0,66.6] #last num in line is to not have error when popping
 shape_position_y = [100, 166.6,200,200,100,166.6,200] #last num in list is to not have error when popping
 #Simple Lists
-turtle_colorFast = ["#b4e2ff", "#a4dcff", "#92d5ff", "#87CEFA", "#78cbff", "#73c9ff", "#58bfff", "#49b9ff", "#38b3ff", "#2dafff", "#22aaff", "#11a4ff", "#009dff", "light sky blue"]
+turtleColorFastRed = ["#FA4D4D", "#FF4A4A", "#FF4747", "#FF4545", "#FC4242", "#FF4040", "#FF3D3D", "#FF3B3B", "#FF3838", "#FF3636", "#FF3333", "#FF3030", "#FF2E2E", "black"]
+turtle_colorFastBlue = ["#00A1FF", "#08A1FF", "#16A1FF", "#24A1FF", "#32A1FF", "#40A1FF", "#48A1FF", "#56A1FF", "#64A1FF", "#72A1FF", "#80A1FF", "#88A1FF", "#96A1FF", "black"]
+turtle_colorFast = []
 shapeX1 = [200,100,-100,-100,-166.6,0,166.6,200,133.3,100,66.6,-66.6,-100,0]
 shapeY1 = [100,100,100,100,166.6,166.6,166.6,100,200,200,200,200,200,0]
 shapeX2 = [100,-100,-200,-166.6,0,100,0,166.6,100,0,-66.6,-166.6,-133.3,0]
@@ -134,24 +141,19 @@ def drawShapes_4(): #Named this because it draws the 4 sided shapes
 #Choose descriptive variable names.
 #Comment code segments or blocks of statements.
 
-#Setting everything up
-for s in turtle_shape:
-  t = trtl.Turtle(shape=s)#Called it t to save time
-  t.color("light sky blue")
-  t.pencolor("black")
-t.pensize(5)
-
-print("Do you want to do this the simple or complex way?")
-type = input("For simple say simple and complex say complex.")
-
-if (type == 'simple'):
+def simple():
   #This will be final simple way
   for i in range(9):
-    drawShapes_3()
+   drawShapes_3()
   for i in range(2):
     drawShapes_4()
     drawShapes_3()
-if (type == 'complex'):
+def complex():
+  global shapeX
+  global shapeY
+  global start_x
+  global start_y
+
   #This will be final complex way
   #Shapes 1 and 2
   t.penup()
@@ -191,10 +193,8 @@ if (type == 'complex'):
     shapeX = int(shape_position_x[0])
     turtle_colorSlow.pop(0)
   nextPosition()
-
   #Shape 7 and 8
   begin()
-
   for i in range(2):
     t.fillcolor(turtle_colorSlow[0])
     t.begin_fill()
@@ -237,7 +237,7 @@ if (type == 'complex'):
   #Shape 11 and 12
 
   begin()
-
+  
   for i in range(2):
     t.pendown()
     t.fillcolor(turtle_colorSlow[0])
@@ -273,7 +273,7 @@ if (type == 'complex'):
   shapeY = shape_position_y.pop(0)
   shapeY = int(shape_position_y[0])
   nextPosition()
-
+  
   #Shape 6
   begin()
 
@@ -301,6 +301,30 @@ if (type == 'complex'):
   t.goto(start_x, start_y)
   turtle_colorSlow.pop(0)
   t.end_fill()
+
+#Setting everything up
+for s in turtle_shape:
+  t = trtl.Turtle(shape=s)#Called it t to save time
+  t.color("light sky blue")
+  t.pencolor("black")
+t.pensize(5)
+
+userInput = trtl.textinput("Diamond/Ruby", "Do you want it to look like a diamond or a ruby?")
+if userInput == "diamond":
+  turtle_colorFast.extend(turtle_colorFastBlue)
+  turtle_colorSlow.extend(turtle_colorSlowBlue)
+
+if userInput == "ruby":
+  turtle_colorFast.extend(turtleColorFastRed)
+  turtle_colorSlow.extend(turtleColorSlowRed)
+  
+
+userInput = trtl.textinput("Simple/Complex", "Do you want it the simple or the complex way?")
+if userInput == "simple":
+  simple()
+
+if userInput == "complex": 
+  complex()
 
 #Keeping whats on the screen there and hiding turtle
 t.hideturtle()
