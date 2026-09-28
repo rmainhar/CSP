@@ -13,6 +13,6 @@ trtl.addshape("football", (
 
 fb = trtl.Turtle(shape="football")
 fb.setheading(90)
-
+fb.goto(3,4)
 wn = trtl.Screen()
 wn.mainloop()
