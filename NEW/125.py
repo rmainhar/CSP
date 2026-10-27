@@ -6,14 +6,17 @@ from functools import partial
 # --- Configuration & Setup ---
 
 # Functions
-def check_logic(x,y,bridge_index):
+def check_logic(clicked_turtle,bridge_index,x,y,):
+    print(x,y,bridge_index)
     """Checks if the clicked bridge block is correct."""
     if bridge_index < len(bridge_logic):
         expected_logic = bridge_logic[bridge_index]
         if expected_logic:
-            print(f"Correct! The block for letter is safe.")
+            print(f"Correct! This block is safe.")
         else:
-            print(f"Wrong! The block for letter is not safe.")
+            print(f"Wrong! The block has shattered!")
+            clicked_turtle.color("red")
+            clicked_turtle.hideturtle()  # Hide the clicked turtle to simulate it shattering
     else:
         print("Invalid bridge index.")
 
@@ -40,10 +43,11 @@ for i in range(10):
         bridge.showturtle()
         bridge_steps.append(bridge)
         bridge_logic.append(left_block if i == 0 else right_block)  # Store the logic for each block
-
+        current_index = len (bridge_steps) - 1
+        bridge.onclick(partial(check_logic,bridge, current_index))  # Bind the click event to the check_logic function
 print(bridge_logic)
 
 wn = trtl.Screen()
-wn.onclick(partial(check_logic,int(1)))
+#wn.onclick(partial(check_logic,int(1)))
 wn.listen()
 wn.mainloop()
