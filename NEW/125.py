@@ -118,6 +118,7 @@ def build_bridge():
 
             bridge_steps.append(bridge)
             bridge.onclick(partial(check_logic, bridge, row_idx, is_safe))
+        #print(left_safe,right_safe)
 
 
 def reset_game():
@@ -157,6 +158,7 @@ def reset_game():
 
 # Initial start
 reset_game()
+
 
 # Bind key controls
 wn.onkey(reset_game, "r")
